@@ -60,9 +60,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuCliente.add(itemRegistrarC);
 
         itemListarC.setText(" Listar Clientes...");
+        itemListarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemListarCActionPerformed(evt);
+            }
+        });
         menuCliente.add(itemListarC);
 
         itemModificarC.setText("Modificar Cliente...");
+        itemModificarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemModificarCActionPerformed(evt);
+            }
+        });
         menuCliente.add(itemModificarC);
 
         itemEliminarC.setText("Eliminar Cliente...");
@@ -73,6 +83,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuProducto.setText(" Producto");
 
         itemRegistrarP.setText(" Registrar Producto...");
+        itemRegistrarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarPActionPerformed(evt);
+            }
+        });
         menuProducto.add(itemRegistrarP);
 
         itemListarP.setText(" Listar Productos...");
@@ -133,6 +148,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventana.setLocationRelativeTo(this);
         ventana.setVisible(true);
     }//GEN-LAST:event_itemRegistrarCActionPerformed
+
+    private void itemModificarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemModificarCActionPerformed
+
+    private void itemListarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemListarCActionPerformed
+
+    private void itemRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemRegistrarPActionPerformed
 
     /**
      * @param args the command line arguments

@@ -24,11 +24,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Listar Clientes..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemListarCActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemModificarC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Cliente..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemModificarCActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemEliminarC">
               <Properties>
@@ -46,6 +52,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Registrar Producto..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemRegistrarPActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemListarP">
               <Properties>
