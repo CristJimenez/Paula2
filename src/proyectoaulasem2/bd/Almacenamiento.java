@@ -11,7 +11,6 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import proyectoaulasem2.datos.Cliente;
 
-
 public class Almacenamiento {
     public static String rutaBase = System.getProperty("user.home")+File.separator+"Datos PA";
     public static String nombreArchivo = "datos.pa";
@@ -42,5 +41,3 @@ public class Almacenamiento {
         return clientesBd;
     }
 }
-
-    

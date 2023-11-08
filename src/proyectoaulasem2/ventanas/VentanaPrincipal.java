@@ -158,9 +158,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemListarCActionPerformed
 
     private void itemRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarPActionPerformed
-        VentanaProducto VentanaProd = new VentanaProducto();
-        VentanaProd.setLocationRelativeTo(this);
-        VentanaProd.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_itemRegistrarPActionPerformed
 
     /**
