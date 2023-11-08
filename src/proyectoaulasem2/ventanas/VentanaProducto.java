@@ -4,6 +4,18 @@
  */
 package proyectoaulasem2.ventanas;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyectoaulasem2.bd.Almacenamiento;
+import proyectoaulasem2.bd.AlmacenamientoP;
+
+
+import proyectoaulasem2.datos.Producto;
+
+
 /**
  *
  * @author Usuario
@@ -16,6 +28,8 @@ public class VentanaProducto extends javax.swing.JFrame {
     public VentanaProducto() {
         initComponents();
     }
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,10 +49,10 @@ public class VentanaProducto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        botonBuscar = new javax.swing.JButton();
+        botonModi = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
+        botonElimi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,24 +112,27 @@ public class VentanaProducto extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Gestion de productos ");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Buscar");
-
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("Guardar");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                botonBuscarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("Modificar");
+        botonModi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonModi.setText("Modificar");
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setText("Eliminar");
+        botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
+
+        botonElimi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonElimi.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,12 +151,12 @@ public class VentanaProducto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonModi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(botonElimi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
@@ -153,24 +170,70 @@ public class VentanaProducto extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonBuscar)
+                    .addComponent(botonGuardar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(botonModi)
+                    .addComponent(botonElimi))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-     String codigo=txtCodigo.getText();
-     String namep=txtNombreP.getText();
-     String precio=txtPrecio.getText();
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+       String Codigo=txtCodigo.getText();
+     String name=txtNombreP.getText();
+     String precioP=txtPrecio.getText();
+     double precioD=Double.parseDouble(precioP);
      
-    }//GEN-LAST:event_jTextField4ActionPerformed
+     if(Producto.ProductosBD.containsKey(Codigo)){
+         
+         JOptionPane.showMessageDialog(this, "El producto con codigo "+Codigo+"Ya se encuentra registrado");
+         return;
+         
+     }
+     Producto prod = new Producto();
+     prod.codigo=Codigo;
+     prod.name=name;
+     prod.precio=precioD;
+     
+     Producto.ProductosBD.put(Codigo, prod);
+     
+          int total = Producto.ProductosBD.size();
+
+     
+      
+        try {
+            AlmacenamientoP.guardar2(Producto.ProductosBD);
+             JOptionPane.showMessageDialog(this, "Producto guardado con exito\nTotal: "+total);
+        } catch (IOException error) {
+         JOptionPane.showMessageDialog(this, error.getMessage());
+        }
+     
+     
+       
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        try {
+            String Codigo = txtCodigo.getText();
+            Producto.ProductosBD = AlmacenamientoP.retornar();
+            if(Producto.ProductosBD.containsKey(Codigo)){
+               
+                Producto produ = Producto.ProductosBD.get(Codigo);
+                txtNombreP.setText(produ.name);
+                txtPrecio.setText(produ.precio+"");
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "El usuario no existe " );
+                
+            } } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+           
+        }
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,18 +271,22 @@ public class VentanaProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonElimi;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonModi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombreP;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
+
+    private void LimpiarCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
