@@ -259,7 +259,24 @@ public class VentanaCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        if(txtDocumento.getText() == null || txtDocumento.getText().isEmpty()){
+            String msj = "Para eliminar, primero tiene que buscar un cliente";
+            JOptionPane.showMessageDialog(this, msj);
+            LimpiarCampos();
+            return ;
+        }
+        int opc = JOptionPane.showConfirmDialog(this, "¿Seguro que desea borrar el cliente?", "CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if(opc == JOptionPane.YES_OPTION){
+            Cliente.ClientesBD.remove(txtDocumento.getText());
+            try {
+                Almacenamiento.guardar(Cliente.ClientesBD);
+                JOptionPane.showMessageDialog(this, "Cliente eliminado con exito");
+                LimpiarCampos();
+            } catch (IOException error) {
+                JOptionPane.showMessageDialog(this, error.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
