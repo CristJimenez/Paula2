@@ -27,6 +27,7 @@ public class Almacenamiento {
         }
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo));
         oos.writeObject(bd);
+        oos.flush();
     }
     
     public static HashMap<String, Cliente> recuperar() throws Exception{

@@ -280,8 +280,13 @@ public class VentanaCliente extends javax.swing.JDialog {
         c.celular = celular;
         Cliente.ClientesBD.put(c.nroDocumento, c);
         String msj = "Cliente modificado con exito";
-        JOptionPane.showMessageDialog(this, msj);
-        LimpiarCampos();
+        try {
+            Almacenamiento.guardar(Cliente.ClientesBD);
+            JOptionPane.showMessageDialog(this, msj);
+            LimpiarCampos();
+        } catch (IOException error) {
+            JOptionPane.showMessageDialog(this, error.getMessage());
+        }
     }//GEN-LAST:event_btnModActionPerformed
 
     public void LimpiarCampos(){

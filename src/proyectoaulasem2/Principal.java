@@ -13,7 +13,5 @@ public class Principal {
         ventana.setExtendedState(VentanaPrincipal.MAXIMIZED_BOTH);
         ventana.setTitle("Sistema de Ventas");
         ventana.setVisible(true);
-        System.out.println("HOLA");
-        System.out.println("h");
     }
 }
