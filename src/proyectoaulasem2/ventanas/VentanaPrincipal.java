@@ -4,6 +4,9 @@
  */
 package proyectoaulasem2.ventanas;
 
+import javax.swing.JOptionPane;
+import proyectoaulasem2.datos.Cliente;
+
 /**
  *
  * @author 123cr
@@ -45,6 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         menuCliente.setText("Cliente");
+        menuCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuClienteActionPerformed(evt);
@@ -81,6 +85,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         barraMenu.add(menuCliente);
 
         menuProducto.setText(" Producto");
+        menuProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         itemRegistrarP.setText(" Registrar Producto...");
         itemRegistrarP.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +112,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         barraMenu.add(menuProducto);
 
         menuVenta.setText("Venta");
+        menuVenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         itemRegistrarV.setText("Registrar Venta...");
         menuVenta.add(itemRegistrarV);
@@ -129,7 +135,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
 
         pack();
@@ -154,7 +160,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemModificarCActionPerformed
 
     private void itemListarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarCActionPerformed
-        // TODO add your handling code here:
+         if(Cliente.ClientesBD == null || Cliente.ClientesBD.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No existen clientes en la BD", "INFORME", JOptionPane.WARNING_MESSAGE);
+            return ; 
+         }
+        VentanaClienteListar ventana = new VentanaClienteListar(this, true);
+        ventana.setLocationRelativeTo(this);
+        ventana.setVisible(true);
     }//GEN-LAST:event_itemListarCActionPerformed
 
     private void itemRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarPActionPerformed
