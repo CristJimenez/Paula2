@@ -20,42 +20,48 @@ import proyectoaulasem2.datos.Producto;
  * @author Usuario
  */
 public class AlmacenamientoP {
-    public static String rutaBaze = System.getProperty("user.home")+File.separator+"datosProducto";
-    public static String nombreArchibo = "datos.prod";
     
-    public static void guardar2(HashMap<String, Producto> Bd) throws IOException{
-        String rutaCompleta = rutaBaze+File.separator+nombreArchibo;
+   public static String rutaBase =  System.getProperty("user.home")+File.separator+"Datos-Producto";
+   public static String nombreArchivo = "datos.prod";
+   
+   
+   public static void guardar(HashMap<String, Producto>Bd) throws IOException{
+       String rutaCompleta = rutaBase+File.separator+nombreArchivo;
          File archivo = new File(rutaCompleta);
          
-        if (!archivo.exists()){
-            File carpeta = new File (archivo.getParent());
-            if(!carpeta.exists()){
-                carpeta.mkdir();
-                
-            }
-            archivo.createNewFile();
-            
-        }
-        
-        ObjectOutputStream cosa = new ObjectOutputStream(new FileOutputStream(archivo));
-        
-        cosa.writeObject(Bd);
-        
-    }
+      
+         
+       if(!archivo.exists()){
+           
+           File carpeta = new File (archivo.getParent());
+           if(!carpeta.exists()){
+               carpeta.mkdir();
+           }
+           archivo.createNewFile();
+           
+       }
+       ObjectOutputStream cosa = new ObjectOutputStream(new FileOutputStream(archivo));
+           cosa.writeObject(Bd);
+           cosa.flush();
+       
+       
+   }
     
-    public static HashMap<String, Producto> retornar() throws Exception{
-        String rutaCompleta = rutaBaze+File.separator+nombreArchibo;
-         File archivo = new File(rutaCompleta);
-         System.out.println("RUTA: "+archivo.getAbsolutePath());
-          if (!archivo.exists()){
-            archivo.createNewFile();
-            throw new Exception ("La Bd esta vacia");
-            
-        }
-          
-          ObjectInputStream cosita = new ObjectInputStream(new FileInputStream(archivo));
-          HashMap<String, Producto> ProductosBd = (HashMap<String, Producto>) cosita.readObject();
-          return ProductosBd;
-    }
+   public static HashMap<String, Producto> retornar() throws Exception{
+        String rutaCompleta = rutaBase+File.separator+nombreArchivo;
+        File archivo = new File(rutaCompleta);
+         if(!archivo.exists()){
+           archivo.createNewFile();
+           
+           throw new Exception("La base de datos esta vacia ");
+       }
+      ObjectInputStream cosita = new ObjectInputStream(new FileInputStream(rutaCompleta)); 
+      
+      HashMap<String, Producto> ProductoBd = (HashMap<String, Producto>) cosita.readObject();
+      return ProductoBd;
+   }
+    
+    
+    
     
 }
