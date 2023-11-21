@@ -8,8 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectoaulasem2.bd.Almacenamiento;
+import proyectoaulasem2.bd.AlmacenamientoG;
 import proyectoaulasem2.bd.AlmacenamientoP;
 import proyectoaulasem2.datos.Cliente;
+import proyectoaulasem2.datos.Gasto;
 import proyectoaulasem2.datos.Producto;
 
 /**
@@ -34,6 +36,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuCliente = new javax.swing.JMenu();
         itemRegistrarC = new javax.swing.JMenuItem();
@@ -51,6 +56,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Captura de pantalla 2023-10-28 191352.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 400, 80));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Captura de pantalla 2023-11-21 171138.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 430, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/WhatsApp Image 2023-11-21 at 4.58.05 PM.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         menuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/servicio-al-cliente.png"))); // NOI18N
         menuCliente.setText("Cliente");
@@ -111,26 +126,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemRegistrarV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Gestion.png"))); // NOI18N
         itemRegistrarV.setText(" Gestion de ventas...");
+        itemRegistrarV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarVActionPerformed(evt);
+            }
+        });
         menuVenta.add(itemRegistrarV);
 
         itemListarV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/List.png"))); // NOI18N
         itemListarV.setText(" Listar Ventas...");
+        itemListarV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemListarVActionPerformed(evt);
+            }
+        });
         menuVenta.add(itemListarV);
 
         barraMenu.add(menuVenta);
 
         setJMenuBar(barraMenu);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,6 +177,12 @@ v.setVisible(true);
     }//GEN-LAST:event_itemRegistrarPActionPerformed
 
     private void itemListarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarPActionPerformed
+         if(Producto.ProductosBD == null || Producto.ProductosBD.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No existen Productos en la BD", "INFORME", JOptionPane.WARNING_MESSAGE);
+            return ; 
+         }
+
+
         VentanaProductoListar v = new VentanaProductoListar(this, true);
         v.setLocationRelativeTo(null);
         v.setVisible(true);
@@ -172,10 +192,31 @@ v.setVisible(true);
         try {
             Producto.ProductosBD = AlmacenamientoP.retornar();
             Cliente.ClientesBD = Almacenamiento.recuperar();
+            Gasto.GastosBD = AlmacenamientoG.retornar();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void itemRegistrarVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarVActionPerformed
+       VentanaGastos g = new VentanaGastos(this,true);
+       g.setLocationRelativeTo(null);
+       g.setVisible(true);
+        
+    }//GEN-LAST:event_itemRegistrarVActionPerformed
+
+    private void itemListarVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarVActionPerformed
+                 if(Gasto.GastosBD == null || Gasto.GastosBD.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No existen Ventas en la BD", "INFORME", JOptionPane.WARNING_MESSAGE);
+            return ; 
+         }
+
+
+        VentanaGastoListar v = new VentanaGastoListar(this, true);
+        v.setLocationRelativeTo(null);
+        v.setVisible(true);
+              
+    }//GEN-LAST:event_itemListarVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +261,9 @@ v.setVisible(true);
     private javax.swing.JMenuItem itemRegistrarC;
     private javax.swing.JMenuItem itemRegistrarP;
     private javax.swing.JMenuItem itemRegistrarV;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu menuCliente;
     private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuVenta;
