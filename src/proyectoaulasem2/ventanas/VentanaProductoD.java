@@ -67,6 +67,7 @@ public class VentanaProductoD extends javax.swing.JDialog {
         botonMod.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/modify.png"))); // NOI18N
         botonMod.setText("Modificar");
+        botonMod.setEnabled(false);
         botonMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModActionPerformed(evt);
@@ -141,6 +142,7 @@ public class VentanaProductoD extends javax.swing.JDialog {
         botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Delete.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
+        botonEliminar.setEnabled(false);
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
@@ -206,6 +208,9 @@ public class VentanaProductoD extends javax.swing.JDialog {
                 txtNombreP.setText(prod.name);
                 txtPrecio.setText(prod.precio+"");
                 txtCodigo.setText(Codigo);
+                
+                botonMod.setEnabled(true);
+                botonEliminar.setEnabled(true);
             }else{
                 JOptionPane.showMessageDialog(this, "El producto no existe ");
 
