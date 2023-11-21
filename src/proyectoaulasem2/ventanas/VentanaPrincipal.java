@@ -38,15 +38,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuProducto = new javax.swing.JMenu();
         itemRegistrarP = new javax.swing.JMenuItem();
         itemListarP = new javax.swing.JMenuItem();
-        itemModificarP = new javax.swing.JMenuItem();
-        itemEliminarP = new javax.swing.JMenuItem();
         menuVenta = new javax.swing.JMenu();
         itemRegistrarV = new javax.swing.JMenuItem();
         itemListarV = new javax.swing.JMenuItem();
         itemModificarV = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
+        menuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/servicio-al-cliente.png"))); // NOI18N
         menuCliente.setText("Cliente");
         menuCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -84,10 +88,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         barraMenu.add(menuCliente);
 
+        menuProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/estar.png"))); // NOI18N
         menuProducto.setText(" Producto");
         menuProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        itemRegistrarP.setText(" Registrar Producto...");
+        itemRegistrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Gestion.png"))); // NOI18N
+        itemRegistrarP.setText("Gestoin de producto");
         itemRegistrarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemRegistrarPActionPerformed(evt);
@@ -95,22 +101,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuProducto.add(itemRegistrarP);
 
+        itemListarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/List.png"))); // NOI18N
         itemListarP.setText(" Listar Productos...");
-        menuProducto.add(itemListarP);
-
-        itemModificarP.setText("Modificar Producto...");
-        menuProducto.add(itemModificarP);
-
-        itemEliminarP.setText("Eliminar Producto...");
-        itemEliminarP.addActionListener(new java.awt.event.ActionListener() {
+        itemListarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemEliminarPActionPerformed(evt);
+                itemListarPActionPerformed(evt);
             }
         });
-        menuProducto.add(itemEliminarP);
+        menuProducto.add(itemListarP);
 
         barraMenu.add(menuProducto);
 
+        menuVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/carrito.png"))); // NOI18N
         menuVenta.setText("Venta");
         menuVenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -135,15 +137,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGap(0, 421, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void itemEliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemEliminarPActionPerformed
 
     private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
         // TODO add your handling code here:
@@ -170,11 +168,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemListarCActionPerformed
 
     private void itemRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarPActionPerformed
-VentanaProducto v = new VentanaProducto();
+VentanaProductoD v = new VentanaProductoD(this,true);
 v.setLocationRelativeTo(null);
 v.setVisible(true);
 
     }//GEN-LAST:event_itemRegistrarPActionPerformed
+
+    private void itemListarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarPActionPerformed
+        VentanaProductoListar v = new VentanaProductoListar(this, true);
+        v.setLocationRelativeTo(null);
+        v.setVisible(true);
+    }//GEN-LAST:event_itemListarPActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -214,12 +222,10 @@ v.setVisible(true);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem itemEliminarC;
-    private javax.swing.JMenuItem itemEliminarP;
     private javax.swing.JMenuItem itemListarC;
     private javax.swing.JMenuItem itemListarP;
     private javax.swing.JMenuItem itemListarV;
     private javax.swing.JMenuItem itemModificarC;
-    private javax.swing.JMenuItem itemModificarP;
     private javax.swing.JMenuItem itemModificarV;
     private javax.swing.JMenuItem itemRegistrarC;
     private javax.swing.JMenuItem itemRegistrarP;

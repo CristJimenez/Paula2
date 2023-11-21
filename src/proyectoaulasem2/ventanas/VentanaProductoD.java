@@ -1,29 +1,25 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package proyectoaulasem2.ventanas;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.swing.JOptionPane;
-
 import proyectoaulasem2.bd.AlmacenamientoP;
-
 import proyectoaulasem2.datos.Producto;
 
 /**
  *
  * @author Usuario
  */
-public class VentanaProducto extends javax.swing.JFrame {
+public class VentanaProductoD extends javax.swing.JDialog {
 
     /**
-     * Creates new form VentanaProducto
+     * Creates new form VentanaProductoD
      */
-    public VentanaProducto() {
+    public VentanaProductoD(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -36,6 +32,10 @@ public class VentanaProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        botonBuscar = new javax.swing.JButton();
+        botonMod = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtCodigo = new javax.swing.JTextField();
         txtNombreP = new javax.swing.JTextField();
@@ -43,14 +43,35 @@ public class VentanaProducto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        botonBuscar = new javax.swing.JButton();
-        botonMod = new javax.swing.JButton();
         botonGuardar = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/dairy-products.png"))); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Gestion de productos ");
+
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/search.png"))); // NOI18N
+        botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
+
+        botonMod.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/modify.png"))); // NOI18N
+        botonMod.setText("Modificar");
+        botonMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
@@ -108,30 +129,8 @@ public class VentanaProducto extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/dairy-products.png"))); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Gestion de productos ");
-
-        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        botonBuscar.setText("Buscar");
-        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBuscarActionPerformed(evt);
-            }
-        });
-
-        botonMod.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        botonMod.setText("Modificar");
-        botonMod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModActionPerformed(evt);
-            }
-        });
-
         botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Save.png"))); // NOI18N
         botonGuardar.setText("Guardar");
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +139,7 @@ public class VentanaProducto extends javax.swing.JFrame {
         });
 
         botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Delete.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +153,7 @@ public class VentanaProducto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -164,11 +164,11 @@ public class VentanaProducto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonMod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                    .addComponent(botonBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMod, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(botonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(65, 65, 65))
         );
@@ -189,49 +189,18 @@ public class VentanaProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonMod)
                     .addComponent(botonEliminar))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-    String Codigo = txtCodigo.getText();
-    String nameP = txtNombreP.getText();
-    String pre = txtPrecio.getText();
-    double precio = Double.parseDouble(pre);
-    if(Producto.ProductosBD.containsKey(Codigo)){
-        JOptionPane.showMessageDialog(this, "El producto con codigo "+Codigo+" Ya existe");
-        return;
-        
-    }
-    Producto prod = new Producto();
-    prod.codigo=Codigo;
-    prod.name=nameP;
-    prod.precio=precio;
-    
-    Producto.ProductosBD.put(Codigo, prod);
-    
-    
-    int total = Producto.ProductosBD.size();
-    
-    
-        try {
-            AlmacenamientoP.guardar(Producto.ProductosBD);
-            JOptionPane.showMessageDialog(this , "Producto guardado con exito\n total: "+total);
-            LimpiarCampos();
-        } catch (IOException error) {
-          JOptionPane.showMessageDialog(this, error.getMessage());
-        }
-    
-    }//GEN-LAST:event_botonGuardarActionPerformed
-
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         try {
             String Codigo = JOptionPane.showInputDialog("Ingrese el codigo del producto para buscar");
-           
+
             Producto.ProductosBD = AlmacenamientoP.retornar();
-            
+
             if (Producto.ProductosBD.containsKey(Codigo)){
                 Producto prod = Producto.ProductosBD.get(Codigo);
                 txtNombreP.setText(prod.name);
@@ -239,88 +208,111 @@ public class VentanaProducto extends javax.swing.JFrame {
                 txtCodigo.setText(Codigo);
             }else{
                 JOptionPane.showMessageDialog(this, "El producto no existe ");
-                
+
             }       } catch (Exception ex) {
-                 JOptionPane.showMessageDialog(this, ex.getMessage());
-            
-        }
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+
+            }
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModActionPerformed
-         
+
         try {
-    String Codigo = JOptionPane.showInputDialog("Ingrese el codigo del producto");
-    Producto.ProductosBD = AlmacenamientoP.retornar(); 
+            String Codigo = JOptionPane.showInputDialog("Ingrese el codigo del producto");
+            Producto.ProductosBD = AlmacenamientoP.retornar();
 
-    String nameP = txtNombreP.getText();
-    String pre = txtPrecio.getText();
+            String nameP = txtNombreP.getText();
+            String pre = txtPrecio.getText();
 
-   
-    if (Codigo.isEmpty() || nameP.isEmpty() || pre.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos");
-        return;
-    }
+            if (Codigo.isEmpty() || nameP.isEmpty() || pre.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos");
+                return;
+            }
 
-    double precio = Double.parseDouble(pre);
+            double precio = Double.parseDouble(pre);
 
-    if (!Producto.ProductosBD.containsKey(Codigo)) {
-        JOptionPane.showMessageDialog(this, "El producto con código " + Codigo + " no existe");
-        return;
-    } else {
-        Producto prod = new Producto();
-        prod.codigo = Codigo;
-        prod.name = nameP;
-        prod.precio = precio;
+            if (!Producto.ProductosBD.containsKey(Codigo)) {
+                JOptionPane.showMessageDialog(this, "El producto con código " + Codigo + " no existe");
+                return;
+            } else {
+                Producto prod = new Producto();
+                prod.codigo = Codigo;
+                prod.name = nameP;
+                prod.precio = precio;
 
-        Producto.ProductosBD.put(Codigo, prod);
+                Producto.ProductosBD.put(Codigo, prod);
 
-        AlmacenamientoP.guardar(Producto.ProductosBD);
-        JOptionPane.showMessageDialog(this, "Cambios guardados con éxito");
-        LimpiarCampos();
-    }
+                AlmacenamientoP.guardar(Producto.ProductosBD);
+                JOptionPane.showMessageDialog(this, "Cambios guardados con éxito");
+                LimpiarCampos();
+            }
 
-} catch (NumberFormatException ex) {
-    JOptionPane.showMessageDialog(this, "Error al convertir el precio a número: " + ex.getMessage());
-} catch (Exception ex) {
-    JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-}
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Error al convertir el precio a número: " + ex.getMessage());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        }
 
-       
-            
     }//GEN-LAST:event_botonModActionPerformed
 
     private void txtCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoMouseClicked
-       int totalClick = evt.getClickCount();
-                if(totalClick >= 2){
-                txtCodigo.setEditable(true);
-                }
+        int totalClick = evt.getClickCount();
+        if(totalClick >= 2){
+            txtCodigo.setEditable(true);
+        }
     }//GEN-LAST:event_txtCodigoMouseClicked
 
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        String Codigo = txtCodigo.getText();
+        String nameP = txtNombreP.getText();
+        String pre = txtPrecio.getText();
+        double precio = Double.parseDouble(pre);
+        if(Producto.ProductosBD.containsKey(Codigo)){
+            JOptionPane.showMessageDialog(this, "El producto con codigo "+Codigo+" Ya existe");
+            return;
+
+        }
+        Producto prod = new Producto();
+        prod.codigo=Codigo;
+        prod.name=nameP;
+        prod.precio=precio;
+
+        Producto.ProductosBD.put(Codigo, prod);
+
+        int total = Producto.ProductosBD.size();
+
+        try {
+            AlmacenamientoP.guardar(Producto.ProductosBD);
+            JOptionPane.showMessageDialog(this , "Producto guardado con exito\n total: "+total);
+            LimpiarCampos();
+        } catch (IOException error) {
+            JOptionPane.showMessageDialog(this, error.getMessage());
+        }
+
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-      
-       if (txtCodigo.getText() == null || txtCodigo.getText().isEmpty()) {
-    String msj = "Para eliminar, primero tiene que ingresar el código del producto";
-    JOptionPane.showMessageDialog(this, msj);
-    LimpiarCampos();
-    return;
-}
 
-int opc = JOptionPane.showConfirmDialog(this, "¿Seguro que desea Eliminar el producto?", "CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (txtCodigo.getText() == null || txtCodigo.getText().isEmpty()) {
+            String msj = "Para eliminar, primero tiene que ingresar el código del producto";
+            JOptionPane.showMessageDialog(this, msj);
+            LimpiarCampos();
+            return;
+        }
 
-if (opc == JOptionPane.YES_OPTION) {
-    Producto.ProductosBD.remove(txtCodigo.getText());
-    try {
-        AlmacenamientoP.guardar(Producto.ProductosBD);
-        JOptionPane.showMessageDialog(this, "Producto eliminado con éxito");
-        LimpiarCampos();
-    } catch (IOException error) {
-        JOptionPane.showMessageDialog(this, error.getMessage());
-    }
-}
+        int opc = JOptionPane.showConfirmDialog(this, "¿Seguro que desea Eliminar el producto?", "CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        
-        
-        
+        if (opc == JOptionPane.YES_OPTION) {
+            Producto.ProductosBD.remove(txtCodigo.getText());
+            try {
+                AlmacenamientoP.guardar(Producto.ProductosBD);
+                JOptionPane.showMessageDialog(this, "Producto eliminado con éxito");
+                LimpiarCampos();
+            } catch (IOException error) {
+                JOptionPane.showMessageDialog(this, error.getMessage());
+            }
+        }
+
     }//GEN-LAST:event_botonEliminarActionPerformed
 public void LimpiarCampos(){
         txtCodigo.setText("");
@@ -330,6 +322,9 @@ public void LimpiarCampos(){
        
     
     }
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -344,20 +339,27 @@ public void LimpiarCampos(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductoD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductoD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductoD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductoD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaProducto().setVisible(true);
+                VentanaProductoD dialog = new VentanaProductoD(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
