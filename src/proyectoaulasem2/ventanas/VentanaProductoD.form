@@ -116,6 +116,7 @@
           <Image iconType="3" name="/proyectoaulasem2/ventanas/iconos/modify.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModActionPerformed"/>
@@ -243,6 +244,7 @@
           <Image iconType="3" name="/proyectoaulasem2/ventanas/iconos/Delete.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarActionPerformed"/>

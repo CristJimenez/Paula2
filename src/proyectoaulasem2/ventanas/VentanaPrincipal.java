@@ -4,8 +4,13 @@
  */
 package proyectoaulasem2.ventanas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import proyectoaulasem2.bd.Almacenamiento;
+import proyectoaulasem2.bd.AlmacenamientoP;
 import proyectoaulasem2.datos.Cliente;
+import proyectoaulasem2.datos.Producto;
 
 /**
  *
@@ -33,15 +38,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuCliente = new javax.swing.JMenu();
         itemRegistrarC = new javax.swing.JMenuItem();
         itemListarC = new javax.swing.JMenuItem();
-        itemModificarC = new javax.swing.JMenuItem();
-        itemEliminarC = new javax.swing.JMenuItem();
         menuProducto = new javax.swing.JMenu();
         itemRegistrarP = new javax.swing.JMenuItem();
         itemListarP = new javax.swing.JMenuItem();
         menuVenta = new javax.swing.JMenu();
         itemRegistrarV = new javax.swing.JMenuItem();
         itemListarV = new javax.swing.JMenuItem();
-        itemModificarV = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -59,7 +61,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        itemRegistrarC.setText("Registrar Cliente...");
+        itemRegistrarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Gestion.png"))); // NOI18N
+        itemRegistrarC.setText(" Gestion de clientes...");
         itemRegistrarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemRegistrarCActionPerformed(evt);
@@ -67,6 +70,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuCliente.add(itemRegistrarC);
 
+        itemListarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/List.png"))); // NOI18N
         itemListarC.setText(" Listar Clientes...");
         itemListarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,17 +79,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuCliente.add(itemListarC);
 
-        itemModificarC.setText("Modificar Cliente...");
-        itemModificarC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemModificarCActionPerformed(evt);
-            }
-        });
-        menuCliente.add(itemModificarC);
-
-        itemEliminarC.setText("Eliminar Cliente...");
-        menuCliente.add(itemEliminarC);
-
         barraMenu.add(menuCliente);
 
         menuProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/estar.png"))); // NOI18N
@@ -93,7 +86,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         itemRegistrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Gestion.png"))); // NOI18N
-        itemRegistrarP.setText("Gestoin de producto");
+        itemRegistrarP.setText(" Gestion de productos...");
         itemRegistrarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemRegistrarPActionPerformed(evt);
@@ -116,14 +109,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuVenta.setText("Venta");
         menuVenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        itemRegistrarV.setText("Registrar Venta...");
+        itemRegistrarV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/Gestion.png"))); // NOI18N
+        itemRegistrarV.setText(" Gestion de ventas...");
         menuVenta.add(itemRegistrarV);
 
+        itemListarV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaulasem2/ventanas/iconos/List.png"))); // NOI18N
         itemListarV.setText(" Listar Ventas...");
         menuVenta.add(itemListarV);
-
-        itemModificarV.setText("Modificar Venta...");
-        menuVenta.add(itemModificarV);
 
         barraMenu.add(menuVenta);
 
@@ -153,10 +145,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_itemRegistrarCActionPerformed
 
-    private void itemModificarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemModificarCActionPerformed
-
     private void itemListarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarCActionPerformed
          if(Cliente.ClientesBD == null || Cliente.ClientesBD.isEmpty()){
             JOptionPane.showMessageDialog(this, "No existen clientes en la BD", "INFORME", JOptionPane.WARNING_MESSAGE);
@@ -181,7 +169,12 @@ v.setVisible(true);
     }//GEN-LAST:event_itemListarPActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    
+        try {
+            Producto.ProductosBD = AlmacenamientoP.retornar();
+            Cliente.ClientesBD = Almacenamiento.recuperar();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -221,12 +214,9 @@ v.setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JMenuItem itemEliminarC;
     private javax.swing.JMenuItem itemListarC;
     private javax.swing.JMenuItem itemListarP;
     private javax.swing.JMenuItem itemListarV;
-    private javax.swing.JMenuItem itemModificarC;
-    private javax.swing.JMenuItem itemModificarV;
     private javax.swing.JMenuItem itemRegistrarC;
     private javax.swing.JMenuItem itemRegistrarP;
     private javax.swing.JMenuItem itemRegistrarV;
